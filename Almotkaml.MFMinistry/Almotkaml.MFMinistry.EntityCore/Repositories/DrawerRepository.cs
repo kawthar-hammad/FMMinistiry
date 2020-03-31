@@ -13,7 +13,7 @@ namespace Almotkaml.MFMinistry.EntityCore.Repositories
         {
 
 
-            ////////
+            //////// HELLOW TO GITHUB
             Context = context;
         }
 
