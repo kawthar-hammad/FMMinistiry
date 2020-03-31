@@ -1,0 +1,82 @@
+﻿@model MissingFormModel
+
+
+@{
+    ViewBag.Title = "شؤون المفقودين";
+    Html.EnableClientValidation(false);
+}
+
+@Html.AntiForgeryToken()
+@Html.SavedModel(Model)
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group row">
+            @*<label for="example-text-input" class="col-sm-4 col-form-label text-right">رقم الإستمارة</label>*@
+            @Html.LabelFor(model => model.FormNumber, new { @class = "col - sm - 4 col - form - label text - right" })
+            <div class="col-sm-6">
+                @Html.TextBoxFor(model => model.FormNumber, new { @class = "field_text form-control" })
+                @Html.ValidationMessageFor(model => model.FormNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @*<label for="example-email-input" class="col-sm-4 col-form-label text-right">تبعية المكتب</label>*@
+            @Html.LabelFor(model => model.DepartmentName, new { @class = "col - sm - 4 col - form - label text - right" })
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.DepartmentId, new SelectList(Model.DepartmentList, nameof(DepartmentListItem.DepartmentId), nameof(DepartmentListItem.DepartmentName)), "--اختر--", new { @class = " form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @*<label for="example-tel-input" class="col-sm-4 col-form-label text-right">تبعية الفئة</label>*@
+            @Html.LabelFor(model => model.RecipientGroupId, new { @class = "col - sm - 4 col - form - label text - right" })
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.RecipientGroupId, new SelectList(Model.GroupList, nameof(GroupListItem.RecipientGroupId), nameof(GroupListItem.GroupName)), "--اختر--", new { @class = " form-control" })
+                @Html.ValidationMessageFor(model => model.RecipientGroupId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @*<label for="example-password-input" class="col-sm-4 col-form-label text-right">المجموعة المالية</label>*@
+            @Html.LabelFor(model => model.FinancialGroupName, new { @class = "col - sm - 4 col - form - label text - right" })
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.FinancialGroupId, new SelectList(Model.FinancialGroupList, nameof(FinancialGroupListItem.FinancialGroupId), nameof(FinancialGroupListItem.Name)), "--اختر--", new { @class = " form-control" })
+                @Html.ValidationMessageFor(model => model.FinancialGroupId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.DrawerName, new { @class = "col - sm - 4 col - form - label text - right" })
+            @*<label for="example-password-input" class="col-sm-4 col-form-label text-right">الدرج</label>*@
+            <div class="col-sm-6">
+                @Html.DropDownListFor(model => model.DrawerId, new SelectList(Model.DrawerList, nameof(DrawerListItem.DrawerId), nameof(DrawerListItem.DrawerNumber)), "--اختر--", new { @class = " form-control" })
+                @Html.ValidationMessageFor(model => model.DrawerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.FormsType, new { @class = "col - sm - 4 col - form - label text - right" })
+            @*<label for="example-password-input" class="col-sm-4 col-form-label text-right">الدرج</label>*@
+            <div class="col-sm-6">
+                @Html.EnumDropDownListFor(model => model.FormsType, new { @class = "field_text form-control" })
+                @Html.ValidationMessageFor(model => model.FormsType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.FormCategory, new { @class = "col - sm - 4 col - form - label text - right" })
+            @*<label for="example-password-input" class="col-sm-4 col-form-label text-right">الدرج</label>*@
+            <div class="col-sm-6">
+                @Html.EnumDropDownListFor(model => model.FormCategory, new { @class = "field_text form-control" })
+                @Html.ValidationMessageFor(model => model.FormCategory, "", new { @class = "text-danger" })
+            </div>
+        </div>
+          
+    </div>
+        </div>
+
+<div class="justify-content-end">
+    <div class="btn-group mr-2 sw-btn-group" role="group">
+        <input type="submit" value="حفـظ" name="save" class="btn btn-info" />
+    </div>
+    <div class="btn-group mr-2 " role="group">
+        @Html.ActionLink("رجوع", "Index", null, new { @class = "btn btn-dark" })
+        @*<button class="btn btn-dark">الرجوع</button>*@
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model SettingsModel
+
+@{
+    ViewBag.Title = "إعدادات المنظومة";
+}
+
+@using (Ajax.BeginForm(new AjaxOptions()
+{
+    UpdateTargetId = "ajax-form",
+    OnSuccess = "RedirectToIndex()",
+    OnBegin = "OnBegin()",
+    LoadingElementId = "divLoading"
+}))
+{
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                    <div id="ajax-form">
+                        @Html.Partial("_Form", Model)
+                    </div>
+                <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    @if (Model.CanSubmit)
+                                    {
+                                        <input name="save" type="submit" value="حفظ" class="btn btn-success waves-effect waves-light js-submit" />
+                                    }
+                                    @Html.ActionLink("الرجوع ", nameof(HomeController.Index), "Home" ,null, new { @class = "btn btn-info waves-effect waves-light" })
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+}

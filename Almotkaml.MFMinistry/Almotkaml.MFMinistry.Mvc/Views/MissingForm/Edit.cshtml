@@ -1,0 +1,66 @@
+﻿@model MissingFormModel
+
+@{
+    ViewBag.Title = "تعديل مذكرة بيانات شهيد";
+}
+@using (Ajax.BeginForm(new AjaxOptions()
+{
+    UpdateTargetId = "ajax-form",
+    OnSuccess = "RedirectToIndex()",
+    OnBegin = "OnBegin()",
+    LoadingElementId = "divLoading"
+}))
+{
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mt-0 header-title">بيانات الشهيد</h4>
+                    <p class="text-muted mb-4">معلومات خاصة بالشهيد/ الشهيدة.</p>
+                    <div id="smart_wizard">
+                        <ul>
+                            <li><a href="#step-1">بيانات الإستمارة<br /><small>بيانات استمارة الشهيد</small></a></li>
+                            <li><a href="#step-2">بيانات الاستشهاد<br /><small>بيانات خاصة بالوكيل</small></a></li>
+                            <li><a href="#step-3">البيانات الشخصية <br /><small>بيانات الشهيد الشخصية</small></a></li>
+                            <li><a href="#step-4">بيانات السكن<br /><small>بيانات سكن الشهيد</small></a></li>
+                            <li><a href="#step-5">بيانات المستفيد<br /><small>بيانات خاصة بالوكيل</small></a></li>
+                        </ul>
+
+                        <div class="p-3 sw-default-content mb-3">
+                            <div id="step-1" class="">
+                                <div class="">
+                                    @*<h4 class="mt-0 header-title"> </h4>*@
+                                    @Html.Partial("_MissingForm", Model, ViewData)
+                                </div><!--end card-body-->
+                            </div>
+                            <div id="step-2" class="">
+                                <div class="">
+                                    @Html.Partial("_MissingdomData", Model, ViewData)
+                                    </div>
+                                </div><!--end card-body-->
+                            <div id="step-3" class="">
+                                <div>
+                                    @Html.Partial("_PersonalInfo", Model, ViewData)
+                                    </div>
+                                </div><!--end card-body-->
+                            <div id="step-4" class="">
+                                <div>
+                                    <h4 class="mt-0 header-title"> </h4>
+                                  @Html.Partial("_HousingData", Model, ViewData)
+                                    </div>
+                                </div><!--end card-body-->
+                            <div id="step-5" class="">
+                                <div>
+                                    <h4 class="mt-0 header-title"> </h4>
+                                    @Html.Partial("_AgentData", Model, ViewData)
+                                </div>
+                            </div><!--end card-body-->
+                            </div>
+                        <!--end /div-->
+                    </div> <!--end smartwizard-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
+}

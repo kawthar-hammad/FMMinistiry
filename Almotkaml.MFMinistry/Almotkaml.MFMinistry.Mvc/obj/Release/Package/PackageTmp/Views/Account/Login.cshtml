@@ -1,0 +1,45 @@
+﻿@model LoginModel
+
+@{
+    ViewBag.Title = "تسجيل الدخول";
+    Layout = "~/Views/Shared/_OutSystem.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.SavedModel(Model)
+
+    <form class="form-horizontal my-4" action="index.html">
+        <div class="note">@Html.Application().Message</div>
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "note" })
+        <div class="form-group">
+            <label for="username">اسم المستخدم</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="mdi mdi-account-outline font-16"></i></span>
+                </div>
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "اسم الدخول", autofocus = "" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="username">كلمة المرور</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon2"><i class="mdi mdi-key font-16"></i></span>
+                </div>
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "كلمة المرور", value = "" })
+            </div>
+        </div>
+
+
+        <div class="form-group mb-0 row">
+            <div class="col-12 mt-2">
+                @*<input type="submit" name="submit" value="دخول" class="btn btn-lg btn-success btn-block" />*@
+                <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">دخـول<i class="fas fa-sign-in-alt ml-1"></i></button>
+            </div>
+        </div>
+    </form>
+}

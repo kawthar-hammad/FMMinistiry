@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{113545F8-95FA-4E58-8C55-D2EA32A26ECF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Almotkaml.MFMinistry.Repository</RootNamespace>
+    <AssemblyName>Almotkaml.MFMinistry.Repository</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile75</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="IActivityRepository.cs" />
+    <Compile Include="IDepartmentRepository.cs" />
+    <Compile Include="IDrawerRepository.cs" />
+    <Compile Include="IFinancialGroupRepository.cs" />
+    <Compile Include="IBankBranchRepository.cs" />
+    <Compile Include="IBankRepository.cs" />
+    <Compile Include="IBranchRepository.cs" />
+    <Compile Include="ICityRepository.cs" />
+    <Compile Include="ICompanyInfoRepository.cs" />
+    <Compile Include="ICountryRepository.cs" />
+    <Compile Include="IGrantRepository.cs" />
+    <Compile Include="IGrantRuleRepository.cs" />
+    <Compile Include="IGroupRepository.cs" />
+    <Compile Include="IMissingRepository.cs" />
+    <Compile Include="IMartyrRepository.cs" />
+    <Compile Include="INationalityRepository.cs" />
+    <Compile Include="INotificationRepository.cs" />
+    <Compile Include="IQuestionRepository.cs" />
+    <Compile Include="ISettingRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="IUserGroupRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Almotkaml\Almotkaml\Almotkaml.csproj">
+      <Project>{7A1E5F14-ED60-45E6-819C-83C9D3470349}</Project>
+      <Name>Almotkaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry.Domain\Almotkaml.MFMinistry.Domain.csproj">
+      <Project>{e4579f1e-69f1-42c7-a704-fb8865f9f49d}</Project>
+      <Name>Almotkaml.MFMinistry.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry\Almotkaml.MFMinistry.csproj">
+      <Project>{ab9a6694-d090-4c96-b423-d8b3c30346ff}</Project>
+      <Name>Almotkaml.MFMinistry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

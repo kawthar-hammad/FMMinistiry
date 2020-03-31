@@ -1,0 +1,101 @@
+﻿@model FinancialGroupModel
+
+@{
+    ViewBag.Title = "المجموعات المالية";
+    Html.EnableClientValidation(false);
+}
+
+@Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-box">
+            <div class="panel-body">
+                @Html.AjaxNote()
+                @if ((Model.CanCreate && Model.FinancialGroupId == 0) || (Model.CanEdit && Model.FinancialGroupId > 0))
+                {
+                    <fieldset>
+                        <legend>
+                            @ViewBag.Title
+                        </legend>
+                        @Html.HiddenFor(model => model.FinancialGroupId)
+                        <div class="panel-body">
+                            @Html.SavedModel(Model)
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FinancialGroupNO)
+                                        @Html.TextBoxFor(model => model.FinancialGroupNO, new { @class = "field_text form-control" })
+                                        @Html.ValidationMessageFor(model => model.FinancialGroupNO)
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Name)
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "field_text form-control" })
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input name="save" type="submit" value="حفظ" class="btn btn-warning" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+                <div class="row"><br /></div>
+                <div class="card card-box">
+                    <div class="card-header">@ViewBag.Title</div><br />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>ر.ت</th>
+                                            <th>@Html.DisplayNameFor(m=>m.FinancialGroupNO)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                            <th>@Html.Show(Model.CanEdit)</th>
+                                            @if (Model.CanDelete)
+                                            {
+                                                <th>حذف</th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var count = 0;
+                                        }
+                                        @foreach (var item in Model.FinancialGroupGrid)
+                                        {
+                                            count++;
+                                            <tr class="odd gradeX">
+                                                <td>@count</td>
+                                                <td>@Html.DisplayFor(modelItem => item.FinancialGroupNO)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                                <td>
+                                                    <button name="editFinancialGroupId" value="@item.FinancialGroupId" class="btn btn-info">@Html.Show(Model.CanEdit)</button>
+                                                </td>
+                                                @if (Model.CanDelete)
+                                                {
+                                                    <td>
+                                                        @Html.Partial("_DeleteDialog", new DeleteDialog(nameof(item.FinancialGroupId), item.FinancialGroupId))
+                                                    </td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

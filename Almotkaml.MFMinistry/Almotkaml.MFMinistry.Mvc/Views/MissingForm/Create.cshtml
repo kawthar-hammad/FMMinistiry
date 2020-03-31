@@ -1,0 +1,41 @@
+﻿@model MissingFormModel
+
+@{
+    ViewBag.Title = "شؤون الشهداء";
+}
+@using (Ajax.BeginForm(new AjaxOptions()
+{
+    UpdateTargetId = "ajax-form",
+    OnSuccess = "RedirectToIndex()",
+    OnBegin = "OnBegin()",
+    LoadingElementId = "divLoading"
+}))
+{
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title">بيانات المفقود</h4>
+                <p class="text-muted mb-4">معلومات خاصة بالمفقود/ المفقودة.</p>
+                <div id="smart_wizard">
+                    <ul>
+                        <li><a href="#step-1">بيانات الإستمارة<br /><small>بيانات استمارة المفقود</small></a></li>
+                     
+                    </ul>
+
+                    <div class="p-3 sw-default-content mb-3">
+                        <div id="step-1" class="">
+                            <div class="">
+                                @*<h4 class="mt-0 header-title"> </h4>*@
+                            @Html.Partial("_MissingForm", Model, ViewData)
+                            </div><!--end card-body-->
+                        </div>
+                    </div>
+                 <!--end /div-->
+                </div> <!--end smartwizard-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
+}

@@ -1,0 +1,145 @@
+﻿
+@model GrantRuleModel
+@{
+    ViewBag.Title = "إضافة قوانين الإستفادة";
+  //  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function show(elementId) {
+        var adddiv = document.getElementById("add-new");
+        if (adddiv.style.display != "block")
+            adddiv.style.display = "block";
+        else
+            adddiv.style.display = "none"
+    }
+</script>
+
+    @Html.AntiForgeryToken()
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                   @Html.AjaxNote()
+                @if ((Model.CanCreate && Model.GrantId == 0) || (Model.CanEdit && Model.GrantId > 0))
+                {
+                    <button type="button" value="إضافة جديد" class="btn btn-success" onclick="show('add-new');"> إضافة جديد</button>
+                    <fieldset>
+                        <legend>@Html.HiddenFor(model => model.GrantId)</legend>
+                        <div class="panel-body"  id="add-new" style="display:none;">
+                            @Html.SavedModel(Model)
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.GrantName)
+                                        @Html.TextBoxFor(model => model.GrantName, new { @class = "field_text form-control" })
+                                        @Html.ValidationMessageFor(model => model.GrantName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input name="save" type="submit" value="حفظ" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+
+                <!-- /.row (nested) -->
+
+                @*<div class="card-header" style="background-color: #fff; border-bottom-color: #fff">قوانين الإستفادة </div>*@
+                <!-- /.panel-heading -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th>الأم</th>
+                                    <th>الأب</th>
+                                    <th>زوجة لم تتزوج</th>
+                                    <th>زوجة تتزوجت</th>
+                                    <th>أبناء عزاب</th>
+                                    <th> أبناء متزوجون</th>
+                                    <th>أخوة عزاب</th>
+                                    <th>أخوة متزوجون</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(var i = 0; i < Model.GrantRuleGrid.Count; i++)
+                                {
+                                    <tr class="odd gradeX">
+                                       
+                                        <td>
+                                        @*@typeof(GrantRuleENUM).DisplayFieldName(item.Name.ToString())*@
+                                            @Html.DisplayFor(modelitem => Model.GrantRuleGrid[i].GrantName)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].GrantId)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].GrantRulesId)
+                                        </td>
+
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.mother)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.mother) 
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.fother)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.fother)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.wifemarr)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.wifemarr)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.wifenotmarr)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.wifenotmarr)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.childmarr)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.childmarr)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.childnotmarr)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.childnotmarr)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.dauthermarr)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.dauthermarr)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => Model.GrantRuleGrid[i].Grantees.dauthernotmarr)
+                                            @Html.HiddenFor(modelItem => Model.GrantRuleGrid[i].Grantees.dauthernotmarr)
+                                        </td>                                                                                                          
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input name="save" type="submit" value="حفظ" class="btn btn-primary" />
+                        <input type="reset" value="استعادة" class="btn btn-secondary" />
+                        @*@Html.ActionLink("الرجوع إلى القائمة", "Index", null, new { @class = "turn_back btn btn-info" })*@
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+<script>
+    function CheckAll($checkAll) {
+        $(document)
+            .ready(function () {
+                $("#selecctall" + $checkAll)
+                    .change(function () {
+                        $(".CheckBoxFor" + $checkAll).prop('checked', $(this).prop("checked"));
+                    });
+            });
+    }
+</script>

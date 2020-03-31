@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{514283F3-C153-42B7-9294-2D8D75566502}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Almotkaml.MFMinistry.Business</RootNamespace>
+    <AssemblyName>Almotkaml.MFMinistry.Business</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile75</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\..\Shared\Almotkaml\Almotkaml\Almotkaml.csproj">
+      <Project>{7a1e5f14-ed60-45e6-819c-83c9d3470349}</Project>
+      <Name>Almotkaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry.Abstraction\Almotkaml.MFMinistry.Abstraction.csproj">
+      <Project>{c33ea375-82d7-4982-9549-0210eb6955e1}</Project>
+      <Name>Almotkaml.MFMinistry.Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry.Domain\Almotkaml.MFMinistry.Domain.csproj">
+      <Project>{e4579f1e-69f1-42c7-a704-fb8865f9f49d}</Project>
+      <Name>Almotkaml.MFMinistry.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry.Models\Almotkaml.MFMinistry.Models.csproj">
+      <Project>{f8be3f04-d9c5-433e-a5c6-f80998598ab0}</Project>
+      <Name>Almotkaml.MFMinistry.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry.Repository\Almotkaml.MFMinistry.Repository.csproj">
+      <Project>{113545f8-95fa-4e58-8c55-d2ea32a26ecf}</Project>
+      <Name>Almotkaml.MFMinistry.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry\Almotkaml.MFMinistry.csproj">
+      <Project>{ab9a6694-d090-4c96-b423-d8b3c30346ff}</Project>
+      <Name>Almotkaml.MFMinistry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationManager.cs" />
+    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="App_Business\General\AccountBusiness.cs" />
+    <Compile Include="App_Business\General\BackUpRestoreBusiness.cs" />
+    <Compile Include="App_Business\General\CompanyInfoBusiness.cs" />
+    <Compile Include="App_Business\General\HomeBusiness.cs" />
+    <Compile Include="App_Business\General\SettingsBusiness.cs" />
+    <Compile Include="App_Business\General\UserActivityBusiness.cs" />
+    <Compile Include="App_Business\General\UserBusiness.cs" />
+    <Compile Include="App_Business\General\UserGroupBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\BankBranchBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\BankBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\DepartmentBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\DrawerBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\FinancialGroupBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\GroupBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\MissingFormBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\MartyrFormBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\GrantRuleBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\QuestionBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\BranchBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\CityBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\CountryBusiness.cs" />
+    <Compile Include="App_Business\MainSettings\NationalityBusiness.cs" />
+    <Compile Include="App_Business\UsersSitting\UserActivityBusiness.cs" />
+    <Compile Include="Business.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Extensions\BankBranchExtensions.cs" />
+    <Compile Include="Extensions\BankExtensions.cs" />
+    <Compile Include="Extensions\QuestionExtensions.cs" />
+    <Compile Include="Extensions\BranchExtensions.cs" />
+    <Compile Include="Extensions\CityExtensions.cs" />
+    <Compile Include="Extensions\MissingFormsExtensions.cs" />
+    <Compile Include="Extensions\MartyrFormsExtensions.cs" />
+    <Compile Include="Extensions\DepartmentExtensions.cs" />
+    <Compile Include="Extensions\DrawerExtensions.cs" />
+    <Compile Include="Extensions\RecipientGroupExtensions.cs" />
+    <Compile Include="Extensions\FinancialGroupExtensions.cs" />
+    <Compile Include="Extensions\CountryExtensions.cs" />
+    <Compile Include="Extensions\GrantRuleExtensions.cs" />
+    <Compile Include="Extensions\NationalityExtensions.cs" />
+    <Compile Include="Extensions\UserActivityExtensions.cs" />
+    <Compile Include="Extensions\UserExtensions.cs" />
+    <Compile Include="Extensions\UserGroupExtensions.cs" />
+    <Compile Include="HrMFMinistry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System.Web">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

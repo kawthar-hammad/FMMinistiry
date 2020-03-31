@@ -1,0 +1,26 @@
+﻿@model BankModel
+
+@{
+    ViewBag.Title = "المصارف";
+}
+
+
+
+@using (Ajax.BeginForm(new AjaxOptions()
+{
+    UpdateTargetId = "ajax-form",
+    OnSuccess = "RedirectToIndex()",
+    OnBegin = "OnBegin()",
+    LoadingElementId = "divLoading"
+}))
+{
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div id="ajax-form">
+                    @Html.Partial("_Form", Model, ViewData)
+                </div>
+            </div>
+        </div>
+    </div>
+}

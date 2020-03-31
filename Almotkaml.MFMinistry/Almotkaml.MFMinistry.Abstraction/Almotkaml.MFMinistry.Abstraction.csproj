@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C33EA375-82D7-4982-9549-0210EB6955E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Almotkaml.MFMinistry.Abstraction</RootNamespace>
+    <AssemblyName>Almotkaml.MFMinistry.Abstraction</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile75</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\..\Shared\Almotkaml\Almotkaml\Almotkaml.csproj">
+      <Project>{7a1e5f14-ed60-45e6-819c-83c9d3470349}</Project>
+      <Name>Almotkaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry.Models\Almotkaml.MFMinistry.Models.csproj">
+      <Project>{f8be3f04-d9c5-433e-a5c6-f80998598ab0}</Project>
+      <Name>Almotkaml.MFMinistry.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Almotkaml.MFMinistry\Almotkaml.MFMinistry.csproj">
+      <Project>{ab9a6694-d090-4c96-b423-d8b3c30346ff}</Project>
+      <Name>Almotkaml.MFMinistry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="IAccountBusiness.cs" />
+    <Compile Include="IBackUpRestoreBusiness.cs" />
+    <Compile Include="IBankBranchBusiness.cs" />
+    <Compile Include="IBankBusiness.cs" />
+    <Compile Include="IDepartmentBusiness.cs" />
+    <Compile Include="IDrawerBusiness.cs" />
+    <Compile Include="IGroupBusiness.cs" />
+    <Compile Include="IMissingFormBusiness.cs" />
+    <Compile Include="IMartyrFormBusiness.cs" />
+    <Compile Include="IFinancialGroupBusiness.cs" />
+    <Compile Include="IGrantRuleBusiness.cs" />
+    <Compile Include="IQuestionBusiness.cs" />
+    <Compile Include="IBranchBusiness.cs" />
+    <Compile Include="ICityBusiness.cs" />
+    <Compile Include="ICompanyInfoBusiness.cs" />
+    <Compile Include="ICountryBusiness.cs" />
+    <Compile Include="IHomeBusiness.cs" />
+    <Compile Include="IHrMFMinistry.cs" />
+    <Compile Include="INationalityBusiness.cs" />
+    <Compile Include="ISettingsBusiness.cs" />
+    <Compile Include="IUserActivityBusiness.cs" />
+    <Compile Include="IUserBusiness.cs" />
+    <Compile Include="IUserGroupBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

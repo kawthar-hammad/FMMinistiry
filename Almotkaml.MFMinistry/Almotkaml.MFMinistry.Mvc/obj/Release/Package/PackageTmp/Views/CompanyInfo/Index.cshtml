@@ -1,0 +1,29 @@
+﻿@model CompanyInfoModel
+
+@{
+    ViewBag.Title = "بيانات الجهة";
+}
+
+@using (Html.BeginForm(Html.Action(), Html.Controller(), FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div id="ajax-form">
+                    @Html.Partial("_Form", Model)
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            @if (Model.CanSubmit)
+                            {
+                                <input name="save" type="submit" value="حفظ" class="btn btn-success waves-effect waves-light js-submit" />
+                            }
+                            @Html.ActionLink("الرجوع ", nameof(HomeController.Index), "Home" ,null, new { @class = "btn btn-info waves-effect waves-light" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

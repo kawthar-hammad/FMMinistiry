@@ -1,0 +1,74 @@
+﻿@model UserIndexModel
+
+@{
+    ViewBag.Title = "المستخدمين";
+}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <br />
+                <p>
+                    @Html.Create(Model.CanCreate)
+                </p>
+            </div>
+            <div class="row">
+                @Html.Note()
+            </div>
+            <div class="row">
+                @using (Html.BeginForm(Html.Action(), Html.Controller(), FormMethod.Get))
+            {
+                    <br />
+                    <p>
+                        @Html.DropDownList("userGroupId", new SelectList(Model.UserGroupList, nameof(UserGroupListItem.UserGroupId), nameof(UserGroupListItem.Name))
+       , "--اختر--", new { @class = "form-control field_menu", onchange = "this.form.submit()" })
+                    </p>
+                }
+
+
+
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>ر.ت</th>
+                                <th>اسم المستخدم</th>
+                                <th>اسم الدخول</th>
+                                <th>المجموعة</th>
+                                <th>@Html.Show(Model.CanEdit)</th>
+                                @if (Model.CanDelete)
+                                {
+                                    <th>حذف</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var count = 0;
+                            }
+                            @foreach (var item in Model.UserGrid)
+                            {
+                                count++;
+                                <tr class="odd gradeX">
+                                    <td>@count</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.GroupName)</td>
+                                    <td>
+                                        @Html.ActionLink(Html.Show(Model.CanEdit), "Edit", new { id = item.UserId }, new { @class = "btn btn-info" })
+                                    </td>
+                                    @if (Model.CanDelete)
+                                    {
+                                        <td class="center">@Html.ActionLink("حذف", "Delete", new { id = item.UserId }, new { @class = "btn btn-danger" })</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+</div>
+    </div>

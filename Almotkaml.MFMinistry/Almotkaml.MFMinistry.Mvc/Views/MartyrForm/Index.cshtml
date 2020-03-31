@@ -1,0 +1,70 @@
+﻿@model MartyrFormModel
+
+@{
+    ViewBag.Title = "شؤون الشهداء";
+}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <br />
+                <p>
+                    @Html.Create(Model.CanCreate)
+                </p>
+            </div>
+            <div class="row">
+                @Html.Note()
+            </div>
+
+                @* تعبئة بيانات في جدول *@
+
+                <div class="row">
+                    <div class="table-responsive">
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ر.ت</th>
+                                    <th>@Html.DisplayNameFor(m=>m.FormNumber)</th>
+                                    <th>@Html.DisplayNameFor(m => m.RecipientGroupName)</th>
+                                    <th>@Html.DisplayNameFor(m => m.DepartmentName)</th>
+                                    <th>@Html.DisplayNameFor(m => m.FinancialGroupName)</th>
+                                    <th>@Html.DisplayNameFor(m => m.MartyrName)</th>
+                                    <th>@Html.Show(Model.CanEdit)</th>
+                                    @if (Model.CanDelete)
+                                    {
+                                        <th>حذف</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var count = 0;
+                                }
+                                @foreach (var item in Model.MartyrFormGrid)
+                                {
+                                    count++;
+                                    <tr class="odd gradeX">
+                                        <td>@count</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FormNumber)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.RecipientGroupName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FinancialGroupName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MartyrName)</td>
+                                        <td>
+                                            @Html.ActionLink(Html.Show(Model.CanEdit), "Edit", new { id = item.MartyrFormId }, new { @class = "btn btn-info" })
+                                        </td>
+                                        @if (Model.CanDelete)
+                                        {
+                                            <td class="center">@Html.ActionLink("حذف", "Delete", new { id = item.MartyrFormId }, new { @class = "btn btn-danger" })</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+    <!-- /.panel -->
