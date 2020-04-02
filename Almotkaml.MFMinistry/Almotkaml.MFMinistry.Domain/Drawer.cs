@@ -8,6 +8,7 @@ namespace Almotkaml.MFMinistry.Domain
 {
     public class Drawer //الأدراج
     {
+        /////KAWTHER TEST
         public static Drawer New(string drawerNumber)
         {
             Check.NotEmpty(drawerNumber, nameof(drawerNumber));
