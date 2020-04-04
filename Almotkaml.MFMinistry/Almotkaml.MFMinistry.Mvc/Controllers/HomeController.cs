@@ -13,6 +13,8 @@ namespace Almotkaml.MFMinistry.Mvc.Controllers
     {
         public ActionResult Index()
         {
+            // Hello Kawther !♥
+
             var model = HrMFMinistry.Home.View();
 
             if (model == null)
